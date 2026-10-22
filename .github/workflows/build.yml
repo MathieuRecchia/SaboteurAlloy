@@ -1,0 +1,26 @@
+name: Build Saboteur Alloy
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    name: Build on Windows
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout du code
+      uses: actions/checkout@v4
+
+    - name: Configuration de CMake
+      run: cmake -B build -DCMAKE_BUILD_TYPE=Release
+
+    - name: Compilation du Plugin
+      run: cmake --build build --config Release
+
+    - name: Sauvegarde du VST3 (Windows)
+      uses: actions/upload-artifact@v4
+      with:
+        name: SaboteurAlloy-Windows-VST3
+        path: build/**/*_artefacts/Release/VST3/*.vst3
