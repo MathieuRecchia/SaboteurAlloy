@@ -1,4 +1,4 @@
-name: Build Saboteur Alloy
+name: Build Saboteur Scalpel
 
 on:
   push:
@@ -22,5 +22,5 @@ jobs:
     - name: Sauvegarde du VST3 (Windows)
       uses: actions/upload-artifact@v4
       with:
-        name: SaboteurAlloy-Windows-VST3
+        name: SaboteurScalpel-Windows-VST3
         path: build/**/*_artefacts/Release/VST3/*.vst3
